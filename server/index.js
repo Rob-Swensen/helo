@@ -18,3 +18,6 @@ massive({
     console.log('db connected')
 })
 
+app.post('/api/register', ctrl.register);
+app.post('/api/login', ctrl.login);
+
