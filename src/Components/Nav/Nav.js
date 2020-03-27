@@ -14,6 +14,6 @@ class Nav extends Component {
   }
 }
 
+const mapStateToProps = reduxState => reduxState;
 
-
-export default Nav;
+export default connect(mapStateToProps)(Nav);

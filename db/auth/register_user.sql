@@ -5,4 +5,4 @@ INSERT INTO users (
     ${username},
     ${password}
 )
-returning user_id, username;
+returning user_id, username, profile_pic;

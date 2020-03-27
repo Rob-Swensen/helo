@@ -20,36 +20,41 @@ class Auth extends Component {
 
   handleRegister = () => {
     const { username, password } = this.state;
-    axios.post("/api/register", { username, password }).then(res => {
-        this.props.getUser(res.data)
-        this.props.history.push('/dashboard')
-    });
+    axios
+      .post("/api/register", { username, password })
+      .then(res => {
+        console.log(res.data);
+        this.props.getUser(res.data);
+        this.props.history.push("/dashboard");
+      })
+      .catch(err => console.log(err));
   };
 
   handleLogin = () => {
-      const { username, password } = this.state;
-      axios.post('/api/login', { username, password})
+    const { username, password } = this.state;
+    axios
+      .post("/api/login", { username, password })
       .then(res => {
-          this.props.getUser(res.data);
-          this.props.history.push('/dashboard')
+        this.props.getUser(res.data);
+        this.props.history.push("/dashboard");
       })
       .catch(err => console.log(err));
-  }
+  };
 
   render() {
-    console.log(this.state);
+    console.log(this.props);
     return (
       <div>
         <p>Username:</p>
         <input
           placeholder="Username"
-          name="Username"
+          name="username"
           onChange={e => this.handleInput(e)}
         />
         <p>Password:</p>
         <input
           placeholder="Password"
-          name="Password"
+          name="password"
           type="password"
           onChange={e => this.handleInput(e)}
         />
