@@ -16,7 +16,8 @@ module.exports = {
 
     let newUser = await db.auth.register_user({
       username,
-      password: hash
+      password: hash,
+      profile_pic: `https://robohash.org/${username}`
     });
     req.session.user = newUser[0];
     res.status(201).send(req.session.user);

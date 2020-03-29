@@ -8,7 +8,7 @@ class Auth extends Component {
     super(props);
     this.state = {
       username: "",
-      password: ""
+      password: "",
     };
   }
 
@@ -42,7 +42,6 @@ class Auth extends Component {
   };
 
   render() {
-    console.log(this.props);
     return (
       <div>
         <p>Username:</p>

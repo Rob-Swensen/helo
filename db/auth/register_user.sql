@@ -1,8 +1,10 @@
 INSERT INTO users (
     username,
-    password
+    password,
+    profile_pic
 ) VALUES (
     ${username},
-    ${password}
+    ${password},
+    ${profile_pic}
 )
 returning user_id, username, profile_pic;
