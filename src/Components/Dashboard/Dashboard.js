@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import Post from "../Post/Post";
+import { connect } from "react-redux";
+import axios from 'axios';
 
 class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      posts: ["test", "test2"],
+      posts: [],
       search: "",
-      userPosts: true
+      userPosts: false
     };
   }
 
@@ -20,24 +22,48 @@ class Dashboard extends Component {
   handleReset = () => {
     this.setState({
       search: ""
-    })
+    });
+  };
+
+  handleToggle = () => {
+    const { userPosts } = this.state;
+    this.setState({
+      userPosts: !userPosts
+    });
+  };
+
+  handleGetPosts = () => {
+    const { search, userPosts } = this.state;
+    const { user_id } = this.props;
+    axios.get(`/api/posts/${user_id}/?string=${search}&&userPostStatus=${userPosts}`)
+    .then(res => 
+      this.setState({
+        posts: res.data
+      }))
   };
 
   render() {
+    console.log(this.props.user_id);
     let mappedPosts = this.state.posts.map((post, index) => (
       <Post key={index} post={post} />
     ));
     return (
       <div>
-        <input value={this.state.search} placeholder="Search" onChange={e => this.handleInput(e)} />
+        <input
+          value={this.state.search}
+          placeholder="Search"
+          onChange={e => this.handleInput(e)}
+        />
         <button>Search</button>
         <button onClick={this.handleReset}>Reset</button>
         <p>My Posts</p>
-        <input name="checkbox" type="checkbox" />
+        <input name="checkbox" type="checkbox" onChange={this.handleToggle} />
         {mappedPosts}
       </div>
     );
   }
 }
 
-export default Dashboard;
+const mapStateToProps = reduxState => reduxState;
+
+export default connect(mapStateToProps)(Dashboard);

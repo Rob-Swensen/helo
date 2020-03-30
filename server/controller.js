@@ -2,7 +2,7 @@ const bcrypt = require("bcryptjs");
 
 module.exports = {
   register: async (req, res) => {
-    console.log(req)
+    // console.log(req)
     const { username, password } = req.body;
     const db = req.app.get("db");
 

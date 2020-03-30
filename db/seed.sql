@@ -10,5 +10,5 @@ CREATE TABLE posts (
     title VARCHAR(45),
     img TEXT,
     content TEXT,
-    author_id INT REFERENCES USERS(USER_ID)
+    author_id INT REFERENCES users(user_id)
 );
