@@ -2,13 +2,14 @@ import React, { Component } from "react";
 import axios from "axios";
 import { getUser } from "../../redux/reducer";
 import { connect } from "react-redux";
+import Logo from './helo_logo.png';
 
 class Auth extends Component {
   constructor(props) {
     super(props);
     this.state = {
       username: "",
-      password: "",
+      password: ""
     };
   }
 
@@ -43,22 +44,30 @@ class Auth extends Component {
 
   render() {
     return (
-      <div>
-        <p>Username:</p>
-        <input
-          placeholder="Username"
-          name="username"
-          onChange={e => this.handleInput(e)}
-        />
-        <p>Password:</p>
-        <input
-          placeholder="Password"
-          name="password"
-          type="password"
-          onChange={e => this.handleInput(e)}
-        />
-        <button onClick={this.handleLogin}>Login</button>
-        <button onClick={this.handleRegister}>Register</button>
+      <div className="landing-page">
+        <section className="login-card">
+          <img className='logo' src={Logo} alt='helo logo'/>
+          <h1>Helo</h1>
+          <section className="input-container">
+            <p>Username:</p>
+            <input className='username-box'
+              name="username"
+              onChange={e => this.handleInput(e)}
+            />
+          </section>
+          <section className="input-container">
+            <p>Password:</p>
+            <input
+              name="password"
+              type="password"
+              onChange={e => this.handleInput(e)}
+            />
+          </section>
+          <section className="login-register-buttons">
+            <button onClick={this.handleLogin}>Login</button>
+            <button onClick={this.handleRegister}>Register</button>
+          </section>
+        </section>
       </div>
     );
   }
