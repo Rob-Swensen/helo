@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { getUser } from "../../redux/reducer";
 import { connect } from "react-redux";
-import Logo from './helo_logo.png';
+import Logo from "./helo_logo.png";
 
 class Auth extends Component {
   constructor(props) {
@@ -24,7 +24,7 @@ class Auth extends Component {
     axios
       .post("/api/register", { username, password })
       .then(res => {
-        console.log(res.data);
+        // console.log(res.data);
         this.props.getUser(res.data);
         this.props.history.push("/dashboard");
       })
@@ -46,11 +46,12 @@ class Auth extends Component {
     return (
       <div className="landing-page">
         <section className="login-card">
-          <img className='logo' src={Logo} alt='helo logo'/>
+          <img className="logo" src={Logo} alt="helo logo" />
           <h1>Helo</h1>
           <section className="input-container">
             <p>Username:</p>
-            <input className='username-box'
+            <input
+              className="username-box"
               name="username"
               onChange={e => this.handleInput(e)}
             />
@@ -64,8 +65,12 @@ class Auth extends Component {
             />
           </section>
           <section className="login-register-buttons">
-            <button onClick={this.handleLogin}>Login</button>
-            <button onClick={this.handleRegister}>Register</button>
+            <button className="button" onClick={this.handleLogin}>
+              Login
+            </button>
+            <button className="button" onClick={this.handleRegister}>
+              Register
+            </button>
           </section>
         </section>
       </div>

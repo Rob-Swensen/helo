@@ -25,6 +25,9 @@ massive({
   app.set("db", db);
   console.log("db connected");
 });
-
+// register and login endpoints
 app.post("/api/register", ctrl.register);
 app.post("/api/login", ctrl.login);
+
+// user post endpoints
+app.get('/api/posts/:userid', )
