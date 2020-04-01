@@ -20,7 +20,7 @@ class Nav extends Component {
         <Link to="/dashboard">
           <img className="nav-icon" src={homeIcon} alt="home icon" />
         </Link>
-        <Link className="nav-icon" to="/post/:postid">
+        <Link className="nav-icon" to="/new">
           <img className="nav-icon" src={newIcon} alt="new post icon" />
         </Link>
         <Link className="nav-icon" to="/">
