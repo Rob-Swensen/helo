@@ -13,7 +13,9 @@ class Post extends Component {
   }
 
   render() {
-    return <div>{this.props.post}</div>;
+    console.log(this.props)
+    const {title, username, profile_pic} = this.props.post
+    return <div>{title} {username} <img src={profile_pic} alt='user profile'/></div>;
   }
 }
 

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Post from "../Post/Post";
 import { connect } from "react-redux";
 import axios from 'axios';
+import './dashboard.css';
 
 class Dashboard extends Component {
   constructor(props) {
@@ -11,6 +12,10 @@ class Dashboard extends Component {
       search: "",
       userPosts: false
     };
+  }
+
+  componentDidMount(){
+    this.handleGetPosts()
   }
 
   handleInput = e => {
@@ -27,6 +32,7 @@ class Dashboard extends Component {
 
   handleToggle = () => {
     const { userPosts } = this.state;
+    
     this.setState({
       userPosts: !userPosts
     });
@@ -36,33 +42,35 @@ class Dashboard extends Component {
     const { search, userPosts } = this.state;
     const { user_id } = this.props;
     axios.get(`/api/posts/${user_id}/?string=${search}&&userPostStatus=${userPosts}`)
-    .then(res => 
+    .then(response => 
+      // console.log(response.data)
       this.setState({
-        posts: res.data
-      }))
+        posts: response.data
+      })
+    )
   };
 
   render() {
-    console.log(this.props.user_id);
+    console.log(this.state.posts);
     let mappedPosts = this.state.posts.map((post, index) => (
       <Post key={index} post={post} />
     ));
     return (
-      <div>
-        <input
+      <div className='dashboard'>
+        <input className='search-box'
           value={this.state.search}
           placeholder="Search"
           onChange={e => this.handleInput(e)}
         />
-        <button>Search</button>
-        <button onClick={this.handleReset}>Reset</button>
+        <button className='button search-button' onClick={this.handleGetPosts}>Search</button>
+        <button className='button reset-button' onClick={this.handleReset}>Reset</button>
         <p>My Posts</p>
-        <input name="checkbox" type="checkbox" onChange={this.handleToggle} />
+        <input className='checkbox' name="checkbox" type="checkbox" onChange={this.handleToggle} />
         {mappedPosts}
       </div>
     );
+    }
   }
-}
 
 const mapStateToProps = reduxState => reduxState;
 
