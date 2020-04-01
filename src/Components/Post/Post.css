@@ -1,0 +1,52 @@
+.post-card {
+    width: 65%;
+    height: 375px;
+    margin: 0 auto;
+    margin-top: 20px;
+    box-sizing: border-box;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0px 0px 5px gray
+}
+
+.post-header {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.post-title {
+    font-family: 'Open Sans', sans-serif;
+    color: #ff9770;
+    font-size: 45px;
+    font-weight: 700;
+}
+
+.username-pic {
+    width: 150px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.username-pic p {
+    font-size: 20px;
+    font-family: 'Open Sans', sans-serif;
+    margin-left: 10px;
+}
+
+.pic-background {
+    background-color: white;
+    box-shadow: 0px 0px 15px gray;
+    border-radius: 50%;
+    height: 70px;
+    width: 70px;
+}
+
+.profile-pic {
+    height: 70px;
+    width: 70px;
+}
+

@@ -1,4 +1,16 @@
 .dashboard {
     display: flex;
     justify-content: center;
+    width: 80%;
+    height: 100px;
+}
+
+.search-box {
+    height: 20px;
+    width: 60%;
+}
+
+.post-profile-pic {
+    width: 80px;
+    height: 80px;
 }
