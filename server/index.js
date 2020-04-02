@@ -34,4 +34,5 @@ app.post("/api/login", ctrl.login);
 
 // user post endpoints
 app.get("/api/posts/:user_id", postCtrl.getPosts);
-app.get('/api/post/:post_id', postCtrl.getPost)
+app.get("/api/post/:post_id", postCtrl.getPost);
+app.post("/api/post/:user_id", postCtrl.createPost);

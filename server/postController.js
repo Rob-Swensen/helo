@@ -31,7 +31,7 @@ module.exports = {
     }
   },
   getPost: (req, res) => {
-    console.log(req.params);
+    // console.log(req.params);
     const { post_id } = req.params;
     const db = req.app.get("db");
 
@@ -39,5 +39,15 @@ module.exports = {
       .get_post(post_id)
       .then(post => res.status(200).send(post))
       .catch(err => console.log(err));
+  },
+  createPost: (req, res) => {
+    // console.log(req.params)
+    const { user_id } = req.params;
+    const { title, img, content } = req.body;
+    const db = req.app.get('db')
+
+    db.posts.create_post(title, img, content, user_id)
+    .then(post => res.sendStatus(200))
+    .catch(err => console.log(err))
   }
 };
