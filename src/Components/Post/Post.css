@@ -50,3 +50,23 @@
     width: 70px;
 }
 
+.delete-post-button {
+    width: 30px;
+    height: 30px;
+}
+
+.img-content-section {
+    display: flex;
+    margin-top: 30px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.post-component-img {
+    height: 250px;
+    width: 350px;
+}
+
+.post-component-content {
+    margin-left: 40px;
+}
+

@@ -52,7 +52,7 @@ class Dashboard extends Component {
   };
 
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     let mappedPosts = this.state.posts.map((post, index) => {
       // console.log(post)
       return (

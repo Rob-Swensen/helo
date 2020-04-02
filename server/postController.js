@@ -49,5 +49,13 @@ module.exports = {
     db.posts.create_post(title, img, content, user_id)
     .then(post => res.sendStatus(200))
     .catch(err => console.log(err))
+  },
+  deletePost: (req, res) => {
+    const {post_id} = req.params
+    const db = req.app.get('db')
+
+    db.posts.delete_post(post_id)
+    .then(posts => res.status(200).send(posts))
+    .catch(err => console.log(err))
   }
 };
