@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
 import axios from "axios";
 import "./Form.css";
 
@@ -20,12 +19,10 @@ class Form extends Component {
   };
 
   handleCreatePost = () => {
-    const { user_id } = this.props;
     const { title, img, content } = this.state;
     axios
-      .post(`/api/post/${user_id}`, { title, img, content })
+      .post(`/api/post/`, { title, img, content })
       .then(response => {
-        console.log(response.data);
         this.props.history.push("/dashboard");
       })
       .catch(err => alert("Oops, something went wrong"));
@@ -44,7 +41,7 @@ class Form extends Component {
             value={this.state.title}
             onChange={e => this.handleChange(e)}
           ></input>
-          <img className='image-box' src={this.state.img}/>
+          <img className='image-box' src={this.state.img} alt='user imported'/>
           <h2>Image URL:</h2>
           <input
             className="input"
@@ -54,13 +51,13 @@ class Form extends Component {
             onChange={e => this.handleChange(e)}
           ></input>
           <h2>Content:</h2>
-          <input
+          <textarea
             className="input content-box"
             type='text'
             name="content"
             value={this.state.content}
             onChange={e => this.handleChange(e)}
-          ></input>
+          ></textarea>
         </section>
         <button className='post-button' onClick={this.handleCreatePost}>Post</button>
       </div>
@@ -68,11 +65,11 @@ class Form extends Component {
   }
 }
 
-const mapStateToProps = reduxState => {
-  const { user_id } = reduxState;
-  return {
-    user_id
-  };
-};
+// const mapStateToProps = reduxState => {
+//   const { user_id } = reduxState;
+//   return {
+//     user_id
+//   };
+// };
 
-export default connect(mapStateToProps)(Form);
+export default Form;

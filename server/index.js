@@ -28,12 +28,14 @@ massive({
   app.set("db", db);
   console.log("db connected");
 });
-// register and login endpoints
+// register, login, logout endpoints
 app.post("/api/register", ctrl.register);
 app.post("/api/login", ctrl.login);
+app.post("/api/auth/logout")
+app.get( '/api/auth/me', ctrl.findUser)
 
 // user post endpoints
-app.get("/api/posts/:user_id", postCtrl.getPosts);
+app.get("/api/posts/", postCtrl.getPosts);
 app.get("/api/post/:post_id", postCtrl.getPost);
-app.post("/api/post/:user_id", postCtrl.createPost);
+app.post("/api/post/", postCtrl.createPost);
 app.delete("/api/post/:post_id", postCtrl.deletePost);

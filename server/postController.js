@@ -1,7 +1,7 @@
 module.exports = {
   getPosts: async (req, res) => {
     const { string, userPostStatus } = req.query;
-    const { user_id } = req.params;
+    const { user_id } = req.session.user;
     const db = req.app.get("db");
     const post = userPostStatus === "false" ? false : true;
 
@@ -31,7 +31,6 @@ module.exports = {
     }
   },
   getPost: (req, res) => {
-    // console.log(req.params);
     const { post_id } = req.params;
     const db = req.app.get("db");
 
@@ -41,8 +40,7 @@ module.exports = {
       .catch(err => console.log(err));
   },
   createPost: (req, res) => {
-    // console.log(req.params)
-    const { user_id } = req.params;
+    const { user_id } = req.session.user;
     const { title, img, content } = req.body;
     const db = req.app.get('db')
 

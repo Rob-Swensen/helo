@@ -22,7 +22,6 @@ class Post extends Component {
 
   getPostInformation = id => {
     axios.get(`/api/post/${id}`).then(response => {
-      console.log(response.data);
       const {
         title,
         img,
@@ -46,16 +45,16 @@ class Post extends Component {
     const { postId } = this.props.match.params;
     axios
       .delete(`/api/post/${postId}`)
-      .then(response => {
+      .then(() => {
         this.props.history.push("/dashboard");
       })
       .catch(err => alert("Not able to delete post"));
   };
 
   render() {
-    console.log(this.state);
-    console.log(this.props);
-    if (this.props.user_id === this.state.author_id) {
+    const {user_id} = this.props
+    const {author_id} = this.state
+    if (user_id === author_id) {
       return (
         <section className="post-card">
           <div className="post-header">
@@ -63,18 +62,19 @@ class Post extends Component {
             <section className="username-pic">
               <p>{this.state.author}</p>
               <div className="pic-background">
-                <img className="profile-pic" src={this.state.authorPicture} />
+                <img className="profile-pic" src={this.state.authorPicture} alt='author profile'/>
               </div>
             </section>
           </div>
           <section className='img-content-section'>
-            <img className="post-component-img" src={this.state.img} />
+            <img className="post-component-img" src={this.state.img} alt='user added'/>
             <p className="post-component-content">{this.state.content}</p>
           </section>
           <img
             onClick={this.deletePost}
             className="delete-post-button"
             src="https://cdn0.iconfinder.com/data/icons/shopping-359/512/Bin_bin_delete_trashcan_garbage_dust-512.png"
+            alt='trash can icon'
           />
         </section>
       );
@@ -86,12 +86,12 @@ class Post extends Component {
             <section className="username-pic">
               <p>{this.state.author}</p>
               <div className="pic-background">
-                <img className="profile-pic" src={this.state.authorPicture} />
+                <img className="profile-pic" src={this.state.authorPicture} alt='user added' />
               </div>
             </section>
           </div>
           <section className='img-content-section'>
-            <img className="post-component-img" src={this.state.img} />
+            <img className="post-component-img" src={this.state.img} alt='user added'/>
             <p className="post-component-content">{this.state.content}</p>
           </section>
         </section>

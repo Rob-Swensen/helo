@@ -73,10 +73,10 @@
   align-items: center;
   font-family: 'Open Sans', sans-serif;
   color: white;
-  position: relative;
+  position: sticky;
+  top: 0px;
   box-sizing: border-box;
   padding: 30px;
-  position: relative;
   box-shadow: 5px 0px 10px gray;
 }
 

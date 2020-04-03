@@ -4,8 +4,30 @@ import { connect } from "react-redux";
 import homeIcon from "./helo_home_logo.png";
 import newIcon from "./helo_new_icon.png";
 import logoutIcon from "./logout_icon.png";
+import axios from 'axios';
+import {getUser} from '../../redux/reducer';
 
 class Nav extends Component {
+
+  componentDidMount(){
+    this.findUser()
+  }
+
+handleLogout = () => {
+    axios.post('/api/auth/logout').then(() => {
+      this.props.logoutUser();
+      this.props.history.push('/');
+    })
+    .catch(err => console.log)
+  }
+
+  findUser = () => {
+    axios.get('/api/auth/me')
+    .then(response => {
+      this.props.getUser(response.data[0])
+    })
+  }
+  
   render() {
     return (
       <div className="nav-bar">
@@ -37,4 +59,4 @@ class Nav extends Component {
 
 const mapStateToProps = reduxState => reduxState;
 
-export default connect(mapStateToProps)(Nav);
+export default connect(mapStateToProps, {getUser})(Nav);

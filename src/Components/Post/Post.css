@@ -1,12 +1,13 @@
 .post-card {
     width: 65%;
-    height: 375px;
+    height: 70vh;
     margin: 0 auto;
     margin-top: 20px;
     box-sizing: border-box;
     padding: 20px;
     background-color: white;
-    box-shadow: 0px 0px 5px gray
+    box-shadow: 0px 0px 5px gray;
+    position: relative;
 }
 
 .post-header {
@@ -53,6 +54,9 @@
 .delete-post-button {
     width: 30px;
     height: 30px;
+    bottom: 20px;
+    right: 20px;
+    position: absolute;
 }
 
 .img-content-section {
@@ -69,4 +73,5 @@
 .post-component-content {
     margin-left: 40px;
 }
+
 

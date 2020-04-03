@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
 import axios from "axios";
 import "./dashboard.css";
 
@@ -38,23 +37,22 @@ class Dashboard extends Component {
   };
 
   handleGetPosts = () => {
-    const { search, userPosts } = this.state;
-    const { user_id } = this.props;
-    axios
-      .get(
-        `/api/posts/${user_id}/?string=${search}&&userPostStatus=${userPosts}`
-      )
-      .then(response =>
-        this.setState({
-          posts: response.data
-        })
-      );
+    setTimeout(() => {
+      const { search, userPosts } = this.state;
+      axios
+        .get(
+          `/api/posts/?string=${search}&&userPostStatus=${userPosts}`
+        )
+        .then(response =>
+          this.setState({
+            posts: response.data
+          })
+        );
+    },1000)
   };
 
   render() {
-    // console.log(this.props);
     let mappedPosts = this.state.posts.map((post, index) => {
-      // console.log(post)
       return (
         <div
           className="one-post-box"
@@ -107,6 +105,5 @@ class Dashboard extends Component {
   }
 }
 
-const mapStateToProps = reduxState => reduxState;
 
-export default connect(mapStateToProps)(Dashboard);
+export default Dashboard;
