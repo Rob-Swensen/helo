@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import "./dashboard.css";
+import searchLogo from "./search_logo.png";
 
 class Dashboard extends Component {
   constructor(props) {
@@ -8,7 +9,7 @@ class Dashboard extends Component {
     this.state = {
       posts: [],
       search: "",
-      userPosts: false
+      userPosts: false,
     };
   }
 
@@ -16,15 +17,15 @@ class Dashboard extends Component {
     this.handleGetPosts();
   }
 
-  handleInput = e => {
+  handleInput = (e) => {
     this.setState({
-      search: e.target.value
+      search: e.target.value,
     });
   };
 
   handleReset = () => {
     this.setState({
-      search: ""
+      search: "",
     });
   };
 
@@ -32,7 +33,7 @@ class Dashboard extends Component {
     const { userPosts } = this.state;
 
     this.setState({
-      userPosts: !userPosts
+      userPosts: !userPosts,
     });
   };
 
@@ -40,15 +41,13 @@ class Dashboard extends Component {
     setTimeout(() => {
       const { search, userPosts } = this.state;
       axios
-        .get(
-          `/api/posts/?string=${search}&&userPostStatus=${userPosts}`
-        )
-        .then(response =>
+        .get(`/api/posts/?string=${search}&&userPostStatus=${userPosts}`)
+        .then((response) =>
           this.setState({
-            posts: response.data
+            posts: response.data,
           })
         );
-    },1000)
+    }, 1000);
   };
 
   render() {
@@ -62,7 +61,7 @@ class Dashboard extends Component {
           <h1>{post.title}</h1>
           <div className="username-pic">
             <p>{post.username}</p>
-            <div className='background-pic'>
+            <div className="background-pic">
               <img
                 className="post-profile-pic"
                 src={post.profile_pic}
@@ -76,34 +75,37 @@ class Dashboard extends Component {
     return (
       <div className="dashboard">
         <div className="search-container">
-          <input
-            className="search-box"
-            value={this.state.search}
-            placeholder="Search by Title"
-            onChange={e => this.handleInput(e)}
-          />
-          <button
-            className="button search-button"
-            onClick={this.handleGetPosts}
-          >
-            Search
-          </button>
-          <button className="button reset-button" onClick={this.handleReset}>
-            Reset
-          </button>
-          <p>My Posts</p>
-          <input
-            className="checkbox"
-            name="checkbox"
-            type="checkbox"
-            onChange={this.handleToggle}
-          />
+          <section className="search-content">
+            <input
+              className="search-box"
+              value={this.state.search}
+              placeholder="Search by Title"
+              onChange={(e) => this.handleInput(e)}
+            />
+            <img
+              onClick={this.handleGetPosts}
+              className="search-logo"
+              src={searchLogo}
+              alt="search microscope"
+            />
+            <button className="reset-button" onClick={this.handleReset}>
+              Reset
+            </button>
+          </section>
+          <section className="my-post-checkbox">
+            <p>My Posts</p>
+            <input
+              className="checkbox"
+              name="checkbox"
+              type="checkbox"
+              onChange={this.handleToggle}
+            />
+          </section>
         </div>
         <section className="search-results">{mappedPosts}</section>
       </div>
     );
   }
 }
-
 
 export default Dashboard;
