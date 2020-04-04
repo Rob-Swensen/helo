@@ -50,7 +50,7 @@ class Auth extends Component {
           <section className="input-container">
             <p>Username:</p>
             <input
-              className="username-box"
+              className="input-box"
               name="username"
               onChange={e => this.handleInput(e)}
             />
@@ -58,6 +58,7 @@ class Auth extends Component {
           <section className="input-container">
             <p>Password:</p>
             <input
+              className='input-box'
               name="password"
               type="password"
               onChange={e => this.handleInput(e)}

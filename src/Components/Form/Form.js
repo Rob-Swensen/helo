@@ -41,7 +41,9 @@ class Form extends Component {
             value={this.state.title}
             onChange={e => this.handleChange(e)}
           ></input>
-          <img className='image-box' src={this.state.img} alt='user imported'/>
+          <div className='placeholder-image'>
+            <img className='image-box' src={this.state.img} alt='user imported'/>
+          </div>
           <h2>Image URL:</h2>
           <input
             className="input"

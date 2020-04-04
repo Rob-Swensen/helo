@@ -22,9 +22,10 @@
     justify-content: space-between;
 }
 
+
 .search-box {
     font-family: 'Open Sans', sans-serif;
-    width: 500px;
+    width: 450px;
     height: 19px;
     font-weight: 700;
 }
@@ -37,7 +38,7 @@
 
 .reset-button {
     position: absolute;
-    right: 363px;
+    right: 280px;
     height: 25px;
     border: none;
     color: white;

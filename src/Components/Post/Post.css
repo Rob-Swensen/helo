@@ -65,9 +65,20 @@
     font-family: 'Open Sans', sans-serif;
 }
 
+.placeholder-img{
+    height: 250px;
+    width: 350px;
+    background-image: url(no_image.jpg);
+    box-shadow: 0px 0px 2px gray;
+    background-size: cover;
+    background-position-y: center;
+}
+
 .post-component-img {
     height: 250px;
     width: 350px;
+    box-shadow: 0px 0px 2px gray;
+    text-indent: -9999px;
 }
 
 .post-component-content {

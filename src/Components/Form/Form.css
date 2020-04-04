@@ -28,11 +28,25 @@
     font-weight: 700;
 }
 
-.image-box {
+.placeholder-image {
     width: 400px;
     height: 250px;
-    margin: 0 auto;
+    display: flex;
     box-shadow: 0px 0px 3px gray;
+    margin: 0 auto;
+    background-image: url(no_image.jpg);
+    background-size: cover;
+    background-position-y: center;
+    background-repeat: no-repeat;
+}
+
+.image-box {
+    position: relative;
+    width: 400px;
+    height: 250px;
+    box-shadow: 0px 0px 3px gray;
+    text-indent: -9999px;
+
 }
 
 .input {

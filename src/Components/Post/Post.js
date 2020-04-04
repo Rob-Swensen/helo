@@ -67,7 +67,9 @@ class Post extends Component {
             </section>
           </div>
           <section className='img-content-section'>
-            <img className="post-component-img" src={this.state.img} alt='user added'/>
+            <div className='placeholder-img'>
+              <img className="post-component-img" src={this.state.img} alt='user added'/>
+            </div>
             <p className="post-component-content">{this.state.content}</p>
           </section>
           <img
@@ -91,7 +93,9 @@ class Post extends Component {
             </section>
           </div>
           <section className='img-content-section'>
-            <img className="post-component-img" src={this.state.img} alt='user added'/>
+            <div className='placeholder-img'>
+              <img className="post-component-img" src={this.state.img} alt='user added'/>
+            </div>
             <p className="post-component-content">{this.state.content}</p>
           </section>
         </section>
