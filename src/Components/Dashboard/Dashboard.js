@@ -25,7 +25,7 @@ class Dashboard extends Component {
 
   handleReset = () => {
     const { search } = this.state;
-    axios.get(`/api/posts/?string=${search}&&userPostStatus=false`).then(
+    axios.get(`/api/posts/?string=&&userPostStatus=false`).then(
       (response) => 
       {console.log(response.data)
       this.setState({

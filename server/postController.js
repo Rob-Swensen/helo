@@ -1,6 +1,7 @@
 module.exports = {
   getPosts: async (req, res) => {
     console.log(req.query)
+    console.log(req.session.user)
     const { string, userPostStatus } = req.query;
     const { user_id } = req.session.user;
     const db = req.app.get("db");
